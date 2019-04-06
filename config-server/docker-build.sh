@@ -1,0 +1,1 @@
+docker build -t config-server:0.1 .

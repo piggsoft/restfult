@@ -1,0 +1,44 @@
+version: "3"
+services:
+  eureka-server-1:
+    image: eureka-server:0.1
+    environment:
+      - spring.profiles.active=peer1
+      - TZ=Asia/Shanghai
+    ports:
+      - "18761:18761"
+    extra_hosts:
+      - "peer1:172.30.0.6"
+      - "peer2:172.30.0.6"
+      - "peer3:172.30.0.6"
+    networks:
+      - restful
+  eureka-server-2:
+    image: eureka-server:0.1
+    environment:
+      - spring.profiles.active=peer2
+      - TZ=Asia/Shanghai
+    ports:
+      - "28761:28761"
+    extra_hosts:
+      - "peer1:172.30.0.6"
+      - "peer2:172.30.0.6"
+      - "peer3:172.30.0.6"
+    networks:
+      - restful
+  eureka-server-3:
+    image: eureka-server:0.1
+    environment:
+      - spring.profiles.active=peer3
+      - TZ=Asia/Shanghai
+    ports:
+      - "38761:38761"
+    extra_hosts:
+      - "peer1:172.30.0.6"
+      - "peer2:172.30.0.6"
+      - "peer3:172.30.0.6"
+    networks:
+      - restful
+networks:
+  restful:
+    driver: bridge

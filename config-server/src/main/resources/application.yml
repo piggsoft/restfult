@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/piggsoft/config-file
+          search-paths: restful
+server:
+  port: 18888
+eureka:
+  instance:
+    hostname: piggsoft.service
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:18761/eureka/,http://peer2:28761/eureka/,http://peer3:38761/eureka/
+
+---
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://piggsoft.service:18761/eureka/
+spring:
+  profiles: dev

@@ -1,0 +1,16 @@
+version: "3"
+services:
+  eureka-server:
+    image: eureka-server:0.1
+    environment:
+      - spring.profiles.active=dev
+      - TZ=Asia/Shanghai
+    ports:
+      - "18761:18761"
+    extra_hosts:
+      - "piggsoft.service:172.30.0.6"
+    networks:
+      - restful
+networks:
+  restful:
+    driver: bridge

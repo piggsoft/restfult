@@ -1,0 +1,50 @@
+logging:
+  level:
+    com:
+      netflix:
+        eureka: OFF
+        discovery: OFF
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:18761/eureka/,http://peer2:28761/eureka/,http://peer3:38761/eureka/
+spring:
+  application:
+    name: eureka-server
+---
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: peer1
+server:
+  port: 18761
+---
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: peer2
+server:
+  port: 28761
+---
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: peer3
+server:
+  port: 38761
+---
+spring:
+  profiles: dev
+server:
+  port: 18761
+eureka:
+  instance:
+    hostname: piggsoft.service
+  client:
+    fetch-registry: false
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
