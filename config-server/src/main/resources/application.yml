@@ -11,7 +11,7 @@ server:
   port: 18888
 eureka:
   instance:
-    hostname: piggsoft.service
+    hostname: piggsoft.mapper
   client:
     serviceUrl:
       defaultZone: http://peer1:18761/eureka/,http://peer2:28761/eureka/,http://peer3:38761/eureka/
@@ -20,6 +20,6 @@ eureka:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://piggsoft.service:18761/eureka/
+      defaultZone: http://piggsoft.mapper:18761/eureka/
 spring:
   profiles: dev

@@ -42,7 +42,7 @@ server:
   port: 18761
 eureka:
   instance:
-    hostname: piggsoft.service
+    hostname: piggsoft.mapper
   client:
     fetch-registry: false
     registerWithEureka: false

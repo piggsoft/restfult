@@ -8,7 +8,7 @@ services:
     ports:
       - "18761:18761"
     extra_hosts:
-      - "piggsoft.service:172.30.0.6"
+      - "piggsoft.mapper:172.30.0.6"
     networks:
       - restful
 networks:

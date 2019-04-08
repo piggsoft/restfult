@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    #无需指定，除非系统无法自动识别
+    #driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12286854?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: sql12286854
+    password: FKHawrK1G9
+    #控制读取sql文件是哪个
+    platform: debug
+    #是否进行脚本初始化
+    initialization-mode: never
+    hikari:
+      #连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count)
+      maximum-pool-size: 15
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM DUAL
+      #等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒
+      connectionTimeout: 30000
+      validationTimeout: 6000
+      #一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟
+      idle-timeout: 600000
+      #一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒，参考MySQL wait_timeout参数（show variables like '%timeout%';）
+      maxLifetime: 1800000
+  devtools:
+    restart:
+      enabled: true
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.piggsoft.restful.user.mapper.entity
+  global-config:
+    db_config:
+      id-type: id_worker
+      table_prefix: t_
+      field-strategy: not_null
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+#logging
+logging:
+  level:
+    root: warn
+    com.piggsoft: debug
+server:
+  port: 18080
